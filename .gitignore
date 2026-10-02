@@ -1,0 +1,14 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+.terraform.lock.hcl
+
+.env
+*.pem
+
+test-data.txt
+modified.txt
+compliance-test.txt
+legal-hold.txt
