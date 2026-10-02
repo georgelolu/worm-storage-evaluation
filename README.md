@@ -887,3 +887,98 @@ https://github.com/georgelolu/worm-storage-evaluation
 **Documentation:** Complete
 **GitHub CI:** Configured
 
+
+---
+
+# Evidence & Validation
+
+The project includes execution evidence captured during the actual AWS deployment and WORM validation process.
+
+The evidence demonstrates:
+
+- Terraform deployment
+- S3 Object Lock enablement
+- Governance retention
+- Compliance retention
+- Legal Hold protection
+- S3 Versioning and version preservation
+- Protected-object deletion rejection
+- Final WORM validation
+
+Complete evidence documentation:
+
+**[View WORM Storage Evidence](docs/evidence/README.md)**
+
+## Evidence Screenshots
+
+| # | Evidence | Description |
+|---|---|---|
+| 01 | [Terraform Deployment](docs/evidence/01-terraform-deployment.png) | Successful Terraform deployment of the WORM storage infrastructure |
+| 02 | [Object Lock Enabled](docs/evidence/02-object-lock-enabled.png) | S3 Object Lock enabled on the bucket |
+| 03 | [Governance Retention](docs/evidence/03-governance-retention.png) | Object version protected using Governance retention |
+| 04 | [Compliance Retention](docs/evidence/04-compliance-retention.png) | Object version protected using Compliance retention |
+| 05 | [Legal Hold](docs/evidence/05-legal-hold.png) | Active Legal Hold protecting an object version |
+| 06 | [Version Preservation](docs/evidence/06-version-preservation.png) | Multiple object versions preserved through S3 Versioning |
+| 07 | [Delete Protection](docs/evidence/07-delete-protection.png) | Attempted deletion of a protected object rejected by S3 Object Lock |
+| 08 | [Final Validation](docs/evidence/08-final-validation.png) | Consolidated validation of the WORM controls |
+
+## Validation Summary
+
+The implementation was validated against the following core WORM controls:
+
+```text
+Terraform Infrastructure
+        │
+        ▼
+S3 Versioning
+        │
+        ▼
+S3 Object Lock
+        │
+        ├── Governance Retention
+        │
+        ├── Compliance Retention
+        │
+        └── Legal Hold
+                │
+                ▼
+        Protected Object Version
+                │
+                ▼
+        Delete Attempt
+                │
+                ▼
+            AccessDenied
+The validation confirms that actively protected object versions cannot be normally deleted while their applicable Object Lock protection remains active.
+
+Project Outcome
+
+This project demonstrates an infrastructure-as-code implementation of AWS S3 WORM storage for data immutability.
+
+The completed evaluation covers:
+
+Immutable object storage using S3 Object Lock
+Governance and Compliance retention modes
+Legal Hold controls
+S3 Versioning
+Server-side encryption
+Public access protection
+IAM-based administrative controls
+Terraform infrastructure provisioning
+GitHub Actions infrastructure validation
+AWS CLI operational inspection
+Automated immutability testing
+Evidence-based validation
+
+The project provides a practical reference implementation for workloads requiring protection against accidental or unauthorized modification and deletion of retained data.
+
+Repository Evidence
+ResourcePurpose
+terraform/Infrastructure-as-code implementation
+docs/architecture.md Architecture and design documentation
+docs/evaluation.md WORM evaluation methodology and findings
+docs/evidence/Captured implementation and validation evidence
+scripts/inspect-object.sh Object Lock inspection utility
+scripts/test-governance.sh Governance retention validation
+.github/workflows/terraform.yml Terraform CI workflow
+
